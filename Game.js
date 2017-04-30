@@ -59,11 +59,18 @@ function TicTacToe(){
     }
     return true;
   }
+  // You don't use board or player in this function.
+  // this.board is not the same as board. You can just omit these parameters.
   this.winner =function(board,player){
+    // its better to check that the values are equal. Example:
+    // if(this.board[0] === this.board[1] && this.board[1] === this.board[2]) return this.board[0];
+    // to avoid having to duplicate all the checks for each player
     if(this.board[0]==1 && this.board[1]==1 && this.board[2]==1) return 1;
+    // There should be 8 cases (3 horizontal, 3 vertical, 2 diagonal). You only have 3
     if(this.board[1]==2 && this.board[4]==2 && this.board[7]==2) return 2;
     if(this.board[2]==2 && this.board[4]==2 && this.board[6]==2) return 2;
 // Thier is no winner
+    // I like the creative use of JSON.stringify to check array equality. But this is not the right way to write this function
   if(  JSON.stringify(this.board)==JSON.stringify([ 1, 2, 1, 1, 2, 2, 2, 1, 2 ]))
     return false;
     // thier is no winner and board is full
